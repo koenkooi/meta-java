@@ -66,7 +66,7 @@ EXTRA_OEMAKE = 'DIST_NAME="${DIST_NAME}" DIST_ID="${DIST_ID}"'
 
 # llvm configure and compiles stuff
 
-export WANT_LLVM_RELEASE = "2.8"
+export WANT_LLVM_RELEASE = "3.3"
 
 # Provides the target architecture to the configure script.
 export LLVM_CONFIGURE_ARCH="${@get_llvm_configure_arch(d)}"
