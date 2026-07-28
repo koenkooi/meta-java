@@ -1,8 +1,8 @@
 require openjdk-8-release-common.inc
 
-# We do not yet work for aarch64, and we make sure
-# to use the aarch32 port for ARMv7.
-COMPATIBLE_HOST = "^(?!(aarch64)).*$"
+# aarch64 and ARMv7 use their own port includes; OpenJDK 8 predates
+# RISC-V and never had a port for it.
+COMPATIBLE_HOST = "^(?!(aarch64|riscv)).*$"
 COMPATIBLE_HOST:armv7a = "^$"
 COMPATIBLE_HOST:armv7ve = "^$"
 
