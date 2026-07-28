@@ -6,7 +6,7 @@ HOMEPAGE = "http://www.junit.org"
 
 SRC_URI = "http://downloads.sourceforge.net/junit/junit-${PV}-src.jar"
 
-S = "${WORKDIR}"
+S = "${UNPACKDIR}"
 
 inherit java-library
 
