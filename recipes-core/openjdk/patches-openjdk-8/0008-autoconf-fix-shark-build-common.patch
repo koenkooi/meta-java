@@ -5,6 +5,8 @@ Subject: [PATCH] autoconf: fix shark build (common)
 
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
 
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  common/autoconf/libraries.m4 | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)

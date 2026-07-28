@@ -5,6 +5,8 @@ Subject: [PATCH] autoconf: remove shell variables from autoheader
 
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
 
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  common/autoconf/basics.m4 | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)

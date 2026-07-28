@@ -5,6 +5,8 @@ Subject: [PATCH] jdk: no genx11 in headless
 
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
 
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  jdk/make/GenerateSources.gmk | 8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)

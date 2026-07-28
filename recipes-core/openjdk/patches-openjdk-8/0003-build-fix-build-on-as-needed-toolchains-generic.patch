@@ -67,6 +67,8 @@ all.
 Signed-off-by: André Draszik <andre.draszik@jci.com>
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
 
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  make/common/NativeCompilation.gmk | 5 ++---
  1 file changed, 2 insertions(+), 3 deletions(-)

@@ -4,6 +4,8 @@ Date: Thu, 2 Jan 2020 10:22:19 +0100
 Subject: [PATCH 1010/1013] hotspot: fix shark build (common)
 
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  make/Makefile                               |  2 +-
  src/cpu/zero/vm/interpreter_zero.cpp        |  2 +-

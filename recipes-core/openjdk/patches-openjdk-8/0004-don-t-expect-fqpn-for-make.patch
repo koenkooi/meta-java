@@ -5,6 +5,8 @@ Subject: [PATCH] don't expect fqpn for make
 
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
 
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  common/autoconf/basics.m4 | 8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)

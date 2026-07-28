@@ -9,6 +9,8 @@ parsed by configure script the extra line has to be filtered out.
 
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
 
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  common/autoconf/boot-jdk.m4 | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

@@ -5,6 +5,8 @@ Subject: [PATCH] jdk: no unused deps
 
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
 
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  jdk/make/CompileNativeLibraries.gmk           |  2 ++
  jdk/make/lib/Awt2dLibraries.gmk               | 30 ++++++++++++++-----
