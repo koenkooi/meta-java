@@ -17,7 +17,10 @@ PACKAGECONFIG[jpeg] = "--with-libjpeg=system,--with-libjpeg=bundled,jpeg-native"
 PACKAGECONFIG[png] = "--with-libpng=system,--with-libpng=bundled,libpng-native"
 PACKAGECONFIG[zlib] = "--with-zlib=system,--with-zlib=bundled,zlib-native"
 
+# debug symbols and diz files are pointless for a native tool JDK
 EXTRA_OECONF:append = "\
+    --disable-debug-symbols \
+    --disable-zip-debug-info \
     --with-jobs=${@openjdk_build_helper_get_parallel_make(d)} \
     \
     --with-tools-dir=${STAGING_DIR_NATIVE} \

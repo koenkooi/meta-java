@@ -8,7 +8,6 @@ PATCHES_URI = "\
     file://0006-autoconf-handle-extra-output.patch \
     file://0007-fix-assembler-flag-handling-in-makefile.patch \
     file://0008-autoconf-fix-shark-build-common.patch \
-    file://0009-prevent-debuginfo-in-favour-of-openembedded-package-.patch \
     file://0010-autoconf-remove-shell-variables-from-autoheader.patch \
     file://0013-autoconf-remove-Werror.patch \
     ${HOTSPOT_UB_PATCH} \
