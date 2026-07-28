@@ -87,7 +87,7 @@ do_install() {
     cp -rp ${B}/images/j2sdk-image/* ${D}${libdir_jvm}/${JDK_DIR}
 
     mkdir -p ${D}${bindir}
-    for tool in keytool pack200 unpack200
+    for tool in java keytool pack200 unpack200
     do
         ln -sf "../lib/jvm/${JDK_DIR}/bin/$tool" ${D}${bindir}/$tool
     done
