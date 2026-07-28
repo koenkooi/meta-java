@@ -21,14 +21,11 @@ PATCHES_URI = "\
     file://2008-jdk-no-unused-deps.patch \
     file://2009-jdk-make-use-gcc-instead-of-ld-for-genSocketOptionRe.patch \
 "
+# 1004-1007 and the aarch64 1401 return-value fixes are upstream since 8u282
 HOTSPOT_UB_PATCH = "\
     file://1001-hotspot-fix-crash-on-JNI_CreateJavaVM.patch \
     file://1002-hotspot-use-correct-include-for-poll.patch \
     file://1003-hotspot-don-t-rely-on-old-SysV-SIGCLD.patch \
-    file://1004-hotspot-fix-Wreturn-type-issues-introduced-by-806165.patch \
-    file://1005-hotspot-Zero-build-requires-disabled-warnings.patch \
-    file://1006-hotspot-Missing-return-statement-in-__sync_val_compa.patch \
-    file://1007-hotspot-Turn-on-the-Wreturn-type-warning.patch \
     file://1008-hotspot-handle-format-error-for-GCC-7.patch \
     file://1012-hotspot-enable-Wno-error.patch \
 "
@@ -36,9 +33,6 @@ HOTSPOT_UB_PATCH:append:class-target = "\
     file://1009-hotspot-fix-adlc-flags.patch \
     file://1010-hotspot-fix-shark-build-common.patch \
     file://1011-hotspot-restrict-to-staging-dir.patch \
-"
-HOTSPOT_UB_PATCH:prepend:aarch64 = "\
-    file://1401-hotspot-aarch64-Add-missing-return-value-to-LIR_Asse.patch \
 "
 HOTSPOT_UB_PATCH:append:armv7a = " file://1201-hotspot-aarch32-fix-missing-return-values.patch"
 HOTSPOT_UB_PATCH:append:armv7ve = " file://1201-hotspot-aarch32-fix-missing-return-values.patch"
