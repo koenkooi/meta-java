@@ -1,6 +1,7 @@
 JDK_DIR = "openjdk-8-native"
+# Unlike the IcedTea builds, vanilla OpenJDK 8 does not need ant.
 DEPENDS = "\
-    icedtea7-native ant-native \
+    openjdk-8-bootstrap-native \
     libxslt-native attr-native \
     glib-2.0-native freetype-native fontconfig-native \
     zip-native unzip-native make-native \
@@ -24,7 +25,7 @@ EXTRA_OECONF:append = "\
     --with-jobs=${@openjdk_build_helper_get_parallel_make(d)} \
     \
     --with-tools-dir=${STAGING_DIR_NATIVE} \
-    --with-boot-jdk=${STAGING_LIBDIR_NATIVE}/jvm/icedtea7-native \
+    --with-boot-jdk=${STAGING_LIBDIR_NATIVE}/jvm/openjdk-8-bootstrap \
     --with-extra-cflags='${CFLAGS}' \
     --with-extra-cxxflags='${CXXFLAGS}' \
     --with-extra-ldflags='${LDFLAGS}' \
