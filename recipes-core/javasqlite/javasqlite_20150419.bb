@@ -19,7 +19,7 @@ inherit autotools-brokensep
 
 DEPENDS += "sqlite3 sqlite3-native icedtea7-native"
 RDEPENDS:${PN} += "sqlite3"
-FILES:${PN} +="/usr/share"
+FILES:${PN} += "/usr/share"
 
 PARALLEL_MAKE = "-j 1"
 

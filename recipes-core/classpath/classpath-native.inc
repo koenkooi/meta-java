@@ -11,9 +11,9 @@ SRC_URI = "${GNU_MIRROR}/classpath/classpath-${PV}.tar.gz"
 
 INC_PR = "r6"
 
-export JAVA="${STAGING_BINDIR_NATIVE}/java-initial"
-export JAVAC="${STAGING_BINDIR_NATIVE}/ecj-initial"
-export JAVACFLAGS="-nowarn"
+export JAVA = "${STAGING_BINDIR_NATIVE}/java-initial"
+export JAVAC = "${STAGING_BINDIR_NATIVE}/ecj-initial"
+export JAVACFLAGS = "-nowarn"
 
 EXTRA_OECONF = "\
     --with-glibj \

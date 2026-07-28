@@ -3,7 +3,7 @@
 
 require classpath-native.inc
 
-DESCRIPTION="Java1.4-compatible GNU Classpath variant that is used as bootclasspath for jikes-native."
+DESCRIPTION = "Java1.4-compatible GNU Classpath variant that is used as bootclasspath for jikes-native."
 DEPENDS += "jikes-native"
 
 PR = "${INC_PR}.2"

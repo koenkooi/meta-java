@@ -30,10 +30,10 @@ EXTRA_OECONF = "\
     "
 
 # enforces the usage of jikes-initial
-export JAVAC="jikes-initial"
+export JAVAC = "jikes-initial"
 
 # enforces the usage of fastjar
-export JAR="fastjar"
+export JAR = "fastjar"
 
 do_configure:append() {
   # Fix the executable name in the wrapper script.

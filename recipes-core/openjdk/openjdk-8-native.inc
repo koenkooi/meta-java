@@ -45,7 +45,7 @@ CPPFLAGS:append = "${@jdk_cpp_options(d)}"
 CXXFLAGS:append = " ${@jdk_cpp_options(d)}"
 
 export MAKE_VERBOSE = "y"
-export MFLAGS="${@jdk_make_options(d)} MAKE_VERBOSE=y QUIETLY= VERBOSE=-s LOG_LEVEL=trace"
+export MFLAGS = "${@jdk_make_options(d)} MAKE_VERBOSE=y QUIETLY= VERBOSE=-s LOG_LEVEL=trace"
 
 EXTRA_OEMAKE:append = ' \
     ${@jdk_make_options(d)} \
