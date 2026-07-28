@@ -27,8 +27,8 @@ CXXFLAGS:append = " -std=gnu++98 -fno-tree-dse"
 # WORKAROUND: ignore errors from new compilers
 CFLAGS:append = " -Wno-error=stringop-overflow -Wno-error=return-type"
 
-# oe.utils.get_host_compiler_version returns "gcc, 9.2" and we want -> "9"
-HOST_COMPILER_MAJOR="${@oe.utils.get_host_compiler_version(d)[1].split(".", 2)[0]}"
+# oe.utils.get_host_gcc_version returns "9.2" and we want -> "9"
+HOST_COMPILER_MAJOR = "${@oe.utils.get_host_gcc_version(d).split(".", 2)[0]}"
 CFLAGS:append = " ${@oe.utils.less_or_equal('HOST_COMPILER_MAJOR', '8', '', ' -Wno-error=format-overflow', d)}"
 
 # Explicitly pass -fcommon since GCC 10 defaults to -fno-common for C sources
@@ -59,7 +59,7 @@ SRC_URI = " \
   file://vframeArray_Fix_sigsegv.patch;apply=no \
   "
 
-S = "${WORKDIR}/${ICEDTEA}"
+S = "${UNPACKDIR}/${ICEDTEA}"
 B = "${S}/build"
 
 # openjdk looks in /usr/include and /usr/lib for freetype by default.
@@ -105,7 +105,7 @@ do_configure:prepend() {
 
 	# Automatically copy everything that starts with "icedtea" and ends with
 	# ".patch" into the patches directory.
-	find ${WORKDIR} -maxdepth 1 -name "icedtea*.patch" -exec cp {} ${S}/patches \;
+	find ${UNPACKDIR} -maxdepth 1 -name "icedtea*.patch" -exec cp {} ${S}/patches \;
 
 	# Prepare JDK-like directory with Classpath' files which we can treat as a
 	# SYSTEM_GCJ_DIR afterwards.
@@ -154,9 +154,9 @@ do_configure:append() {
 	${POST_CONFIGURE_CLEAN_X11}
 	oe_runmake patch-boot
 
-	patch -p1 < ${WORKDIR}/jaxws_fix_NullPointerException.patch
-	patch -p1 < ${WORKDIR}/sigsegv.patch
-	patch -p1 < ${WORKDIR}/vframeArray_Fix_sigsegv.patch
+	patch -p1 < ${UNPACKDIR}/jaxws_fix_NullPointerException.patch
+	patch -p1 < ${UNPACKDIR}/sigsegv.patch
+	patch -p1 < ${UNPACKDIR}/vframeArray_Fix_sigsegv.patch
 }
 
 EXTRA_OEMAKE = ' \
