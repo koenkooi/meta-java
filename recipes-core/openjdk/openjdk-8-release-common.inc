@@ -20,6 +20,8 @@ PATCHES_URI = "\
     file://2007-jdk-no-genx11-in-headless.patch \
     file://2008-jdk-no-unused-deps.patch \
     file://2009-jdk-make-use-gcc-instead-of-ld-for-genSocketOptionRe.patch \
+    file://2010-jdk-splashscreen-stubs-return-0-not-NULL.patch \
+    file://2011-jdk-LinuxNativeDispatcher-include-stdlib.h.patch \
 "
 # 1004-1007 and the aarch64 1401 return-value fixes are upstream since 8u282
 HOTSPOT_UB_PATCH = "\
@@ -85,46 +87,8 @@ PACKAGECONFIG:append:armv4 = " zero"
 PACKAGECONFIG:append:armv5 = " zero"
 PACKAGECONFIG:append:armv6 = " zero"
 
-OPENJDK_ARCH_PORT = "jdk8u"
-OPENJDK_ARCH_PORT:aarch64 = "aarch64-port"
-OPENJDK_ARCH_PORT:armv7a = "aarch32-port"
-OPENJDK_ARCH_PORT:armv7ve = "aarch32-port"
-OPENJDK_HG_U = "jdk8u"
-
-# the aarch64 port moved, for more information see:
-# https://mail.openjdk.java.net/pipermail/aarch64-port-dev/2018-August/006265.html
-OPENJDK_HG_U:aarch64 = "jdk8u-shenandoah"
-
-OPENJDK_HG_URL = "https://hg.openjdk.java.net/${OPENJDK_ARCH_PORT}/${OPENJDK_HG_U}"
-
-OPENJDK_FILE = "${OPENJDK_CHANGESET}.tar.bz2"
-OPENJDK_FILE_LOCAL = "openjdk8-${PV}-jdk8u-${OPENJDK_FILE}"
-OPENJDK_URI = "${OPENJDK_HG_URL}/archive/${OPENJDK_FILE};downloadfilename=${OPENJDK_FILE_LOCAL};name=openjdk"
-
-HOTSPOT_FILE = "${HOTSPOT_CHANGESET}.tar.bz2"
-HOTSPOT_FILE_LOCAL = "openjdk8-${PV}-hotspot-${HOTSPOT_FILE}"
-HOTSPOT_URI = "${OPENJDK_HG_URL}/hotspot/archive/${HOTSPOT_FILE};downloadfilename=${HOTSPOT_FILE_LOCAL};name=hotspot;unpack=false"
-
-CORBA_FILE = "${CORBA_CHANGESET}.tar.bz2"
-CORBA_FILE_LOCAL = "openjdk8-${PV}-corba-${CORBA_FILE}"
-CORBA_URI = "${OPENJDK_HG_URL}/corba/archive/${CORBA_FILE};downloadfilename=${CORBA_FILE_LOCAL};name=corba;unpack=false"
-
-JAXP_FILE = "${JAXP_CHANGESET}.tar.bz2"
-JAXP_FILE_LOCAL = "openjdk8-${PV}-jaxp-${JAXP_FILE}"
-JAXP_URI = "${OPENJDK_HG_URL}/jaxp/archive/${JAXP_FILE};downloadfilename=${JAXP_FILE_LOCAL};name=jaxp;unpack=false"
-
-JAXWS_FILE = "${JAXWS_CHANGESET}.tar.bz2"
-JAXWS_FILE_LOCAL = "openjdk8-${PV}-jaxws-${JAXWS_FILE}"
-JAXWS_URI = "${OPENJDK_HG_URL}/jaxws/archive/${JAXWS_FILE};downloadfilename=${JAXWS_FILE_LOCAL};name=jaxws;unpack=false"
-
-JDK_FILE = "${JDK_CHANGESET}.tar.bz2"
-JDK_FILE_LOCAL = "openjdk8-${PV}-jdk-${JDK_FILE}"
-JDK_URI = "${OPENJDK_HG_URL}/jdk/archive/${JDK_FILE};downloadfilename=${JDK_FILE_LOCAL};name=jdk;unpack=false"
-
-LANGTOOLS_FILE = "${LANGTOOLS_CHANGESET}.tar.bz2"
-LANGTOOLS_FILE_LOCAL = "openjdk8-${PV}-langtools-${LANGTOOLS_FILE}"
-LANGTOOLS_URI = "${OPENJDK_HG_URL}/langtools/archive/${LANGTOOLS_FILE};downloadfilename=${LANGTOOLS_FILE_LOCAL};name=langtools;unpack=false"
-
-NASHORN_FILE = "${NASHORN_CHANGESET}.tar.bz2"
-NASHORN_FILE_LOCAL = "openjdk8-${PV}-nashorn-${NASHORN_FILE}"
-NASHORN_URI = "${OPENJDK_HG_URL}/nashorn/archive/${NASHORN_FILE};downloadfilename=${NASHORN_FILE_LOCAL};name=nashorn;unpack=false"
+# Skara-converted git mirrors of the retired hg.openjdk.java.net forests.
+# The forest subrepos (corba, hotspot, jdk, ...) are plain subdirectories
+# of one unified tree there.
+OPENJDK_GIT_REPO ?= "jdk8u"
+OPENJDK_URI = "git://github.com/openjdk/${OPENJDK_GIT_REPO};protocol=https;nobranch=1"

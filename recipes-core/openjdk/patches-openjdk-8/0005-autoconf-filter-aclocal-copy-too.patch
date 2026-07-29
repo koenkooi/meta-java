@@ -5,19 +5,21 @@ Subject: [PATCH] autoconf: filter aclocal copy too
 
 Signed-off-by: Richard Leitner <richard.leitner@skidata.com>
 
+Upstream-Status: Inappropriate [OE-specific build integration]
+
 ---
  common/autoconf/basics.m4 | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/common/autoconf/basics.m4 b/common/autoconf/basics.m4
-index c20ea765..8e06cd25 100644
+index e01566ef..41c5f4a6 100644
 --- a/common/autoconf/basics.m4
 +++ b/common/autoconf/basics.m4
 @@ -636,6 +636,7 @@ AC_DEFUN_ONCE([BASIC_SETUP_OUTPUT_DIR],
            | $SED -e 's/config.log//g' \
- 	      -e 's/confdefs.h//g' \
- 	      -e 's/fixpath.exe//g' \
-+	      -e 's,aclocal-copy,,g' \
- 	      -e 's/ //g' \
+               -e 's/configure.log//g' \
+               -e 's/confdefs.h//g' \
++              -e 's,aclocal-copy,,g' \
+               -e 's/ //g' \
            | $TR -d '\n'`
        if test "x$filtered_files" != x; then

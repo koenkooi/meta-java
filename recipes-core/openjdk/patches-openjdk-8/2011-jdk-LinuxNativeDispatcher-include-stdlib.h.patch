@@ -1,0 +1,20 @@
+From: Koen Kooi <koen@dominion.thruhere.net>
+Subject: [PATCH] jdk: LinuxNativeDispatcher: include stdlib.h for free()
+
+GCC 14 makes implicit function declarations a hard error.
+
+Upstream-Status: Backport [openjdk/jdk src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c]
+
+---
+diff --git a/jdk/src/solaris/native/sun/nio/fs/LinuxNativeDispatcher.c b/jdk/src/solaris/native/sun/nio/fs/LinuxNativeDispatcher.c
+index bd836bfc..e70a8a58 100644
+--- a/jdk/src/solaris/native/sun/nio/fs/LinuxNativeDispatcher.c
++++ b/jdk/src/solaris/native/sun/nio/fs/LinuxNativeDispatcher.c
+@@ -29,6 +29,7 @@
+ #include "jlong.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <dlfcn.h>
+ #include <errno.h>

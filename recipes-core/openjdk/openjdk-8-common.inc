@@ -7,22 +7,11 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=3e0b59f8fac05c3c03d4a26bbda13f8f"
 require openjdk-common.inc
 
 AUTOTOOLS_SCRIPT_PATH = "${S}/common/autoconf/"
-export AUTOCONF_DIR="${AUTOTOOLS_SCRIPT_PATH}"
+export AUTOCONF_DIR = "${AUTOTOOLS_SCRIPT_PATH}"
 FILESPATH =. "${FILE_DIRNAME}/patches-openjdk-8:"
-
-# for weird openjdk-common.inc
-S = "${WORKDIR}/${OPENJDK_HG_U}-${OPENJDK_CHANGESET}"
 
 SRC_URI = "\
     ${OPENJDK_URI} \
-    ${HOTSPOT_URI} \
-    ${CORBA_URI} \
-    ${JAXP_URI} \
-    ${JAXWS_URI} \
-    ${JDK_URI} \
-    ${LANGTOOLS_URI} \
-    ${NASHORN_URI} \
-    file://LICENSE \
     ${PATCHES_URI} \
 "
 
@@ -31,27 +20,7 @@ do_configure:prepend () {
     sed -i 's#\$TOPDIR#${S}#g' ${S}/common/autoconf/configure.ac
 }
 
-do_unpack_extract_submodules () {
-    cd "${S}"
-    # tar --transform
-    tar xjf ${WORKDIR}/${CORBA_FILE_LOCAL} --transform "s,-${CORBA_CHANGESET},,g"
-    tar xjf ${WORKDIR}/${HOTSPOT_FILE_LOCAL} --transform "s,-${HOTSPOT_CHANGESET},,g"
-    tar xjf ${WORKDIR}/${JAXP_FILE_LOCAL} --transform "s,-${JAXP_CHANGESET},,g"
-    tar xjf ${WORKDIR}/${JAXWS_FILE_LOCAL} --transform "s,-${JAXWS_CHANGESET},,g"
-    tar xjf ${WORKDIR}/${JDK_FILE_LOCAL} --transform "s,-${JDK_CHANGESET},,g"
-    tar xjf ${WORKDIR}/${LANGTOOLS_FILE_LOCAL} --transform "s,-${LANGTOOLS_CHANGESET},,g"
-    tar xjf ${WORKDIR}/${NASHORN_FILE_LOCAL} --transform "s,-${NASHORN_CHANGESET},,g"
-}
-
 do_patch:prepend() {
-    # use do_patch:prepend syntax and not pre/postfuncs to
-    # call do_unpack_extract_submodules
-    # *) the archiver.bbclass modifies WORKDIR, S, B,...
-    #    and those modifications are lost otherwise,
-    #    which leads to build failures in do_unpack_and_patch -> do_patch
-    func = 'do_unpack_extract_submodules'
-    bb.build.exec_func(func, d)
-
     # delete X11 wrappers if x11 is not part of PACKAGECONFIG
     if bb.utils.contains('PACKAGECONFIG', 'x11', False, True, d):
        func_delete = 'do_unpack_delete_X11_wrappers'
@@ -168,25 +137,28 @@ def jdk_configure_options(d):
     options = package_config_option_cleanup(d)
     return options[3]
 
-#do_unpack[postfuncs] += "do_unpack_extract_submodules"
-#do_unpack[postfuncs] += "${@bb.utils.contains('PACKAGECONFIG', 'x11', '', 'do_unpack_delete_X11_wrappers', d)}"
-
 export DEBUG_BINARIES = "true"
 
 ALTERNATIVE_PRIORITY = "50"
 
 OPENJDK_UPDATE_VERSION = "${PV}"
 OPENJDK_BUILD_NUMBER = "ga"
+# autoconf >= 2.72 appends -std=gnu23 to CC, which the pre-C23 JDK
+# C code cannot compile under (bool is a keyword in C23)
 EXTRA_OECONF:append = "\
         --with-build-number=${OPENJDK_BUILD_NUMBER} \
         --with-update-version=${OPENJDK_UPDATE_VERSION} \
+        ac_cv_prog_cc_c23=no \
 "
 
 # Since v6, GCC sets the default C++ standard to C++14 and introduces
 # dead store elimination by default.
 # Since v10, GCC defaults to -fno-common.
-# OpenJDK 8 is not ready for either of these changes.
-GLOBAL_FLAGS = "-fno-lifetime-dse -fno-delete-null-pointer-checks -fcommon"
+# Since v14, GCC promotes several C diagnostics to errors.
+# OpenJDK 8 is not ready for any of these changes.
+GLOBAL_FLAGS = "-fno-lifetime-dse -fno-delete-null-pointer-checks -fcommon \
+    -Wno-error=implicit-function-declaration -Wno-error=int-conversion \
+    -Wno-error=incompatible-pointer-types"
 
 # flags for -native, and for bits that need a host-tool during -cross
 BUILD_CFLAGS:append = " ${GLOBAL_FLAGS}"

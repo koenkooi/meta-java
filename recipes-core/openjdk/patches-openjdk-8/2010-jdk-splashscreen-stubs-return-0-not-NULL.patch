@@ -1,0 +1,27 @@
+From: Koen Kooi <koen@dominion.thruhere.net>
+Subject: [PATCH] jdk: splashscreen stubs: return 0, not NULL, from int stubs
+
+GCC 14 makes returning a pointer from an int function a hard error.
+Current OpenJDK uses 0 here.
+
+Upstream-Status: Backport [openjdk/jdk src/java.base/share/native/libjli/splashscreen_stubs.c]
+
+---
+diff --git a/jdk/src/share/bin/splashscreen_stubs.c b/jdk/src/share/bin/splashscreen_stubs.c
+index 9c1f5148..666634f6 100644
+--- a/jdk/src/share/bin/splashscreen_stubs.c
++++ b/jdk/src/share/bin/splashscreen_stubs.c
+@@ -61,11 +61,11 @@ typedef char* (*SplashGetScaledImageName_t)(const char* fileName,
+ #define INVOKEV(name) _INVOKE(name, ,;)
+ 
+ int     DoSplashLoadMemory(void* pdata, int size) {
+-    INVOKE(SplashLoadMemory, NULL)(pdata, size);
++    INVOKE(SplashLoadMemory, 0)(pdata, size);
+ }
+ 
+ int     DoSplashLoadFile(const char* filename) {
+-    INVOKE(SplashLoadFile, NULL)(filename);
++    INVOKE(SplashLoadFile, 0)(filename);
+ }
+ 
+ void    DoSplashInit(void) {
