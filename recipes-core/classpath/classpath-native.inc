@@ -1,6 +1,9 @@
 SUMMARY = "GNU Classpath standard Java libraries - For native Java-dependent programs"
 HOMEPAGE = "http://www.gnu.org/software/classpath/"
 LICENSE = "GPL-2.0 AND LicenseRef-SAX-PD"
+# SAX-PD (public domain SAX API) has no oe-core generic license entry and no
+# standalone license file to map via NO_GENERIC_LICENSE.
+INSANE_SKIP:${PN} += "license-format"
 LIC_FILES_CHKSUM = "file://COPYING;md5=af0004801732bc4b20d90f351cf80510"
 
 DEPENDS = "fastjar-native zip-native"

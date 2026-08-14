@@ -4,6 +4,9 @@ SECTION = "libs"
 
 # GPLv2 + custom linking exception
 LICENSE = "GPL-2.0 AND LicenseRef-SAX-PD"
+# SAX-PD (public domain SAX API) has no oe-core generic license entry and no
+# standalone license file to map via NO_GENERIC_LICENSE.
+INSANE_SKIP:${PN} += "license-format"
 
 PBN = "classpath"
 

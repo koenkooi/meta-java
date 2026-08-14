@@ -1,6 +1,8 @@
 SUMMARY = "Full Java CommAPI implementation"
 DEPENDS = "virtual/javac-native"
 LICENSE = "LicenseRef-RXTXv2.1"
+# Custom RXTX license (LGPL-derived), no oe-core generic license entry.
+INSANE_SKIP:${PN} += "license-format"
 LIC_FILES_CHKSUM = "file://COPYING;md5=32303a23463f90b12a7d1dafb8deabf4"
 PR = "r3"
 

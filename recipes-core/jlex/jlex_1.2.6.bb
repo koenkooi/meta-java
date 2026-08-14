@@ -3,6 +3,8 @@ AUTHOR = "Elliot Berk, A. Appel, C. Scott Ananian"
 
 JLEX_MAIN_FILENAME = "jlex-${PV}-Main.java"
 LICENSE = "LicenseRef-JLEX"
+# Custom JLex license, no oe-core generic license entry.
+INSANE_SKIP:${PN} += "license-format"
 LIC_FILES_CHKSUM = "file://${JLEX_MAIN_FILENAME};beginline=148;endline=166;md5=9bf4a6a951053991db64f9d7330d648a"
 
 PACKAGE_ARCH = "${TUNE_PKGARCH}"
