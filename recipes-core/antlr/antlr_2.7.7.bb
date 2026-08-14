@@ -1,7 +1,7 @@
 SUMMARY = "Framework for constructing recognizers, interpreters, compilers, and translators"
 HOMEPAGE = "http://www.antlr2.org"
 # see http://www.antlr2.org/license.html
-LICENSE = "PD"
+LICENSE = "LicenseRef-PD"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=361934e706423915b4d9f413ad37fb65"
 
 SRC_URI = "http://www.antlr2.org/download/${BP}.tar.gz"

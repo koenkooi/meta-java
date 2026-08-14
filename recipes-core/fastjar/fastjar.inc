@@ -2,7 +2,7 @@ SUMMARY = "jar replacement written in C."
 HOMEPAGE = "http://savannah.nongnu.org/projects/fastjar/"
 SECTION = "devel"
 PRIORITY = "optional"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 PR = "r1"
 
 DEPENDS = "zlib"

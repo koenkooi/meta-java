@@ -4,7 +4,7 @@ SUMMARY:${PN}-bin = "${SUMMARY} (Binaries)"
 AUTHOR = "Matthew Johnson <dbus@matthew.ath.cx>"
 HOMEPAGE = "http://dbus.freedesktop.org/doc/dbus-java"
 SECTION = "libs"
-LICENSE = "LGPL-2.1 & AFL-2.1"
+LICENSE = "LGPL-2.1 AND AFL-2.1"
 
 DEPENDS = "libmatthew gettext-native fastjar-native"
 RDEPENDS:${PN}-viewer = "java2-runtime libunixsocket-java ${PN}-bin libmatthew-debug-java ${JPN}"

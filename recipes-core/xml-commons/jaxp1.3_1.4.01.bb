@@ -1,6 +1,6 @@
 SUMMARY = "Java XML parser and transformer APIs (DOM, SAX, JAXP, TrAX)"
 AUTHOR = "Apache Software Foundation"
-LICENSE = "Apache-2.0 & W3C & PD"
+LICENSE = "Apache-2.0 AND W3C AND LicenseRef-PD"
 LIC_FILES_CHKSUM = " \
                     file://LICENSE;md5=d273d63619c9aeaf15cdaf76422c4f87 \
                     file://LICENSE.dom-documentation.txt;md5=31a36539f6ad4bbe3ac3bd45af0de5d3 \

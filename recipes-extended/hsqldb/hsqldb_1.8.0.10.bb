@@ -1,6 +1,6 @@
 SUMMARY = "Lightweight 100% Java SQL Database Engine"
 # BSD-like
-LICENSE = "HypersonicSQL"
+LICENSE = "LicenseRef-HypersonicSQL"
 LIC_FILES_CHKSUM = "file://doc/hypersonic_lic.txt;md5=778452795343df6f459b725185966888"
 LIC_FILES_CHKSUM = "file://doc/hsqldb_lic.txt;md5=beb9a0581941064345aba5de7e519d53"
 AUTHOR = "HSQLDB Development Group"

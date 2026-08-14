@@ -3,7 +3,7 @@ HOMEPAGE = "http://www.gnu.org/software/classpath/"
 SECTION = "libs"
 
 # GPLv2 + custom linking exception
-LICENSE = "GPL-2.0 & SAX-PD"
+LICENSE = "GPL-2.0 AND LicenseRef-SAX-PD"
 
 PBN = "classpath"
 
