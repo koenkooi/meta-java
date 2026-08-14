@@ -3,7 +3,7 @@ HOMEPAGE = "http://www.antlr2.org"
 # see http://www.antlr2.org/license.html
 LICENSE = "LicenseRef-PD"
 # Public domain, no oe-core generic license entry.
-INSANE_SKIP:${PN} += "license-format"
+ERROR_QA:remove = "license-format"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=361934e706423915b4d9f413ad37fb65"
 
 SRC_URI = "http://www.antlr2.org/download/${BP}.tar.gz"

@@ -2,7 +2,7 @@ SUMMARY = "Lexical analyzer generator for Java"
 AUTHOR = "Elliot Berk, A. Appel, C. Scott Ananian"
 LICENSE = "LicenseRef-CUP"
 # Custom CUP parser generator license, no oe-core generic license entry.
-INSANE_SKIP:${PN} += "license-format"
+ERROR_QA:remove = "license-format"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/LICENSE;md5=2c9db91c00f38e52cfc8e67bafaa7c33"
 
 

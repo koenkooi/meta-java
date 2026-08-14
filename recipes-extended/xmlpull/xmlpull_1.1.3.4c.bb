@@ -4,7 +4,7 @@ PRIORITY = "optional"
 SECTION = "libs"
 LICENSE = "LicenseRef-PD"
 # Public domain, no oe-core generic license entry.
-INSANE_SKIP:${PN} += "license-format"
+ERROR_QA:remove = "license-format"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=f353e5a2416136a69a4a44ed3b761f65"
 
 DEPENDS = "ant-native"
